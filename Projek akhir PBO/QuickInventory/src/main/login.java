@@ -166,7 +166,28 @@ public class login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
+        String username = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
+        System.out.println(username);
+        System.out.println(password);
+        try {
+            Connection conn = koneksi.getConnection();
+            String sql = "SELECT * FROM users WHERE username=? AND password=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Login Berhasil");
+                MainPage dashboard = new MainPage();
+                dashboard.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Username atau Password Salah");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
