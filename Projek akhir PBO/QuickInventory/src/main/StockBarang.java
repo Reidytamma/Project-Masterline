@@ -12,17 +12,18 @@ import java.sql.SQLException;
 import database.koneksi;
 /**
  *
- * @author Reidytamma
+ * @author HP
  */
-public class MainPage extends javax.swing.JFrame {
+public class StockBarang extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainPage.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(StockBarang.class.getName());
 
     /**
      * Creates new form login
      */
-    public MainPage() {
+    public StockBarang() {
         initComponents();
+        tampilkanData();
     }
 
     /**
@@ -37,11 +38,9 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         rounded1 = new main.Rounded();
         jLabel1 = new javax.swing.JLabel();
-        btnLihatStokBarang = new javax.swing.JButton();
-        btnSimpanBarang = new javax.swing.JButton();
-        rounded2 = new main.Rounded();
-        btnLogout = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,63 +53,61 @@ public class MainPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Quick Inventory");
+        jLabel1.setText("Stock Barang");
 
         javax.swing.GroupLayout rounded1Layout = new javax.swing.GroupLayout(rounded1);
         rounded1.setLayout(rounded1Layout);
         rounded1Layout.setHorizontalGroup(
             rounded1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rounded1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(72, 72, 72)
                 .addComponent(jLabel1)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         rounded1Layout.setVerticalGroup(
             rounded1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rounded1Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(rounded1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
-
-        btnLihatStokBarang.setText("📦 Lihat Stok Barang");
-        btnLihatStokBarang.addActionListener(this::btnLihatStokBarangActionPerformed);
-        jPanel1.add(btnLihatStokBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 320, 70));
-
-        btnSimpanBarang.setText("➕ Tambah Barang");
-        btnSimpanBarang.addActionListener(this::btnSimpanBarangActionPerformed);
-        jPanel1.add(btnSimpanBarang, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 320, 71));
-
-        rounded2.setBackground(new java.awt.Color(255, 0, 0));
-
-        btnLogout.setBackground(new java.awt.Color(255, 51, 51));
-        btnLogout.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogout.setText("Log Out");
-        btnLogout.addActionListener(this::btnLogoutActionPerformed);
-
-        javax.swing.GroupLayout rounded2Layout = new javax.swing.GroupLayout(rounded2);
-        rounded2.setLayout(rounded2Layout);
-        rounded2Layout.setHorizontalGroup(
-            rounded2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rounded2Layout.createSequentialGroup()
+            .addGroup(rounded1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        rounded2Layout.setVerticalGroup(
-            rounded2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rounded2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(rounded2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, -1, -1));
+        jPanel1.add(rounded1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, 80));
 
-        jButton3.setText("💵 Transaksi");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 320, 70));
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(this::btnKembaliActionPerformed);
+        jPanel1.add(btnKembali, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 320, 70));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id_Barang", "Serial_Number", "Nama_Barang", "merek", "Stock", "Harga", "Garansi"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 850, 310));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/bg.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -130,26 +127,11 @@ public class MainPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        int pilihan = JOptionPane.showConfirmDialog(null, "Apakah anda yakin ingin Logout?",
-                "Konformasi Logout.", JOptionPane.YES_NO_OPTION);
-        if (pilihan == JOptionPane.YES_OPTION) {
-            this.dispose();
-            new login().setVisible(true);
-        }
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnLihatStokBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLihatStokBarangActionPerformed
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new StockBarang().setVisible(true);
-    }//GEN-LAST:event_btnLihatStokBarangActionPerformed
-
-    private void btnSimpanBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanBarangActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnSimpanBarangActionPerformed
+        new MainPage().setVisible(true);
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,18 +155,48 @@ public class MainPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new MainPage().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new StockBarang().setVisible(true));
     }
+private void tampilkanData() {
+    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel();
+    model.addColumn("Id_Barang");
+    model.addColumn("Serial_Number");
+    model.addColumn("Nama_Barang");
+    model.addColumn("Merek");
+    model.addColumn("Stock");
+    model.addColumn("Harga");
+    model.addColumn("Garansi");
 
+    try {
+        Connection conn = database.koneksi.getConnection(); 
+        String sql = "SELECT * FROM barang"; 
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getInt("id_barang"),        
+                rs.getString("serial_number"), 
+                rs.getString("nama_barang"),   
+                rs.getString("merek"),         
+                rs.getInt("stok"),            
+                rs.getDouble("harga"),         
+                rs.getString("garansi_bulan")        
+            });
+        }
+        jTable1.setModel(model);
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Gagal memuat data: " + e.getMessage());
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLihatStokBarang;
-    private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnSimpanBarang;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnKembali;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private main.Rounded rounded1;
-    private main.Rounded rounded2;
     // End of variables declaration//GEN-END:variables
 }
