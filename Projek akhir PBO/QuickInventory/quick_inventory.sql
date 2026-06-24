@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2026 at 09:44 AM
+-- Generation Time: Jun 24, 2026 at 09:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,11 +32,26 @@ CREATE TABLE `barang` (
   `serial_number` varchar(50) NOT NULL,
   `nama_barang` varchar(100) NOT NULL,
   `merek` varchar(50) DEFAULT NULL,
-  `spesifikasi` text DEFAULT NULL,
   `stok` int(11) DEFAULT 0,
   `harga` int(11) DEFAULT 0,
   `garansi_bulan` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `serial_number`, `nama_barang`, `merek`, `stok`, `harga`, `garansi_bulan`) VALUES
+(1, 'SN-LOGI-8392X', 'Mouse Wireless M331', 'Logitech', 45, 195000, 12),
+(2, 'SN-SAMS-9912A', 'Monitor Gaming 24\"', 'Samsung', 12, 1850000, 24),
+(3, 'SN-ASUS-4410M', 'Laptop Asus Vivobook', 'Asus', 7, 8500000, 24),
+(4, 'SN-KEYB-7721K', 'Mechanical Keyboard K8', 'Keychron', 20, 1200000, 12),
+(5, 'SN-SONY-1029WH', 'Headphone WH-1000XM4', 'Sony', 5, 3499000, 12),
+(6, 'SN-SAND-5541U', 'Flashdisk 64GB USB 3.0', 'SanDisk', 120, 85000, 6),
+(7, 'SN-ACER-3321N', 'Proyektor X1126AH', 'Acer', 8, 4200000, 12),
+(8, 'SN-RODE-9902M', 'Microphone NT-USB', 'Rode', 15, 2600000, 24),
+(9, 'SN-SEAG-1102H', 'Harddisk Eksternal 1TB', 'Seagate', 30, 775000, 36),
+(10, 'SN-RAZR-6652D', 'Mouse Pad Viper', 'Razer', 50, 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -109,7 +124,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
