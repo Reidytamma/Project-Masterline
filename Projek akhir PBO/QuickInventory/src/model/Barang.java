@@ -9,7 +9,6 @@ import database.OperasiBarang;
  * @author Reidytamma
  */
 public abstract class Barang implements OperasiBarang {
-    // ENKAPSULASI: Atribut private (Syarat Proyek)
     private String idBarang;
     private String serialNumber;
     private String namaBarang;
@@ -17,7 +16,6 @@ public abstract class Barang implements OperasiBarang {
     private int stok;
     private double harga;
 
-    // CONSTRUCTOR 1: Dipanggil saat load data lengkap (Syarat Proyek)
     public Barang(String idBarang, String serialNumber, String namaBarang, String merek, int stok, double harga) {
         this.idBarang = idBarang;
         this.serialNumber = serialNumber;
@@ -27,17 +25,14 @@ public abstract class Barang implements OperasiBarang {
         this.harga = harga;
     }
 
-    // OVERLOADING CONSTRUCTOR: Jika barang baru masuk belum ada stok/harga (Syarat Proyek)
     public Barang(String idBarang, String namaBarang) {
         this(idBarang, "-", namaBarang, "-", 0, 0.0);
     }
 
-    // POLIMORFISME: Method untuk Overriding nanti
     public void tampilkanDetail() {
         System.out.println("ID: " + idBarang + " | Nama: " + namaBarang + " | Stok: " + stok);
     }
 
-    // Implementasi Interface OperasiBarang
     @Override
     public void tambahStok(int jumlah) {
         if (OperasiBarang.cekHargaValid(jumlah)) { 
@@ -46,7 +41,6 @@ public abstract class Barang implements OperasiBarang {
         }
     }
 
-    // GETTER & SETTER untuk Enkapsulasi (Syarat Proyek)
     public String getIdBarang(){
         return idBarang;
     }

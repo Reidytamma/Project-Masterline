@@ -110,6 +110,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel1.add(rounded2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, -1, -1));
 
         jButton3.setText("💵 Transaksi");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 320, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/bg.png"))); // NOI18N
@@ -151,6 +152,12 @@ public class MainPage extends javax.swing.JFrame {
         this.dispose();
         new TambahBarang().setVisible(true);
     }//GEN-LAST:event_btnSimpanBarangActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new TransaksiKeluar().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

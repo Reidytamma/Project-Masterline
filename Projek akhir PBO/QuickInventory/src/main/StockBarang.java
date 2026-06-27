@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import database.koneksi;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author HP
@@ -158,7 +159,7 @@ public class StockBarang extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new StockBarang().setVisible(true));
     }
 private void tampilkanData() {
-    javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel();
+    DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Id_Barang");
     model.addColumn("Serial_Number");
     model.addColumn("Nama_Barang");
