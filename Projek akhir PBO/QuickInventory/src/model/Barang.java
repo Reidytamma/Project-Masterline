@@ -47,10 +47,22 @@ public abstract class Barang implements OperasiBarang {
     }
 
     // GETTER & SETTER untuk Enkapsulasi (Syarat Proyek)
-    public String getIdBarang() { return idBarang; }
-    public String getSerialNumber() { return serialNumber; }
-    public String getNamaBarang() { return namaBarang; }
-    public String getMerek() { return merek; }
-    public int getStok() { return stok; }
-    public double getHarga() { return harga; }
+    public String getIdBarang(){
+        return idBarang;
+    }
+    public String getSerialNumber(){
+        return serialNumber;
+    }
+    public String getNamaBarang(){
+        return namaBarang;
+    }
+    public String getMerek(){
+        return merek;
+    }
+    public int getStok(){
+        return stok;
+    }
+    public double getHarga(){
+        return harga;
+    }
 }

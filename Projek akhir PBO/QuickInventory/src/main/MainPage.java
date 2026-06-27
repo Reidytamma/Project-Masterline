@@ -148,7 +148,8 @@ public class MainPage extends javax.swing.JFrame {
 
     private void btnSimpanBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanBarangActionPerformed
         // TODO add your handling code here:
-        
+        this.dispose();
+        new TambahBarang().setVisible(true);
     }//GEN-LAST:event_btnSimpanBarangActionPerformed
 
     /**
