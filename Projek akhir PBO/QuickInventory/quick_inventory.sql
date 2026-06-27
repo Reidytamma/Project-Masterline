@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2026 at 09:41 AM
+-- Generation Time: Jun 27, 2026 at 11:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,11 +47,11 @@ INSERT INTO `barang` (`id_barang`, `serial_number`, `nama_barang`, `merek`, `sto
 (3, 'SN-ASUS-4410M', 'Laptop Asus Vivobook', 'Asus', 7, 8500000, 24),
 (4, 'SN-KEYB-7721K', 'Mechanical Keyboard K8', 'Keychron', 20, 1200000, 12),
 (5, 'SN-SONY-1029WH', 'Headphone WH-1000XM4', 'Sony', 5, 3499000, 12),
-(6, 'SN-SAND-5541U', 'Flashdisk 64GB USB 3.0', 'SanDisk', 120, 85000, 6),
+(6, 'SN-SAND-5541U', 'Flashdisk 64GB USB 3.0', 'SanDisk', 60, 85000, 6),
 (7, 'SN-ACER-3321N', 'Proyektor X1126AH', 'Acer', 8, 4200000, 12),
 (8, 'SN-RODE-9902M', 'Microphone NT-USB', 'Rode', 15, 2600000, 24),
 (9, 'SN-SEAG-1102H', 'Harddisk Eksternal 1TB', 'Seagate', 30, 775000, 36),
-(10, 'SN-RAZR-6652D', 'Mouse Pad Viper', 'Razer', 50, 250000, 0);
+(10, 'SN-RAZR-6652D', 'Mouse Pad Viper', 'Razer', 40, 250000, 0);
 
 -- --------------------------------------------------------
 
@@ -61,13 +61,19 @@ INSERT INTO `barang` (`id_barang`, `serial_number`, `nama_barang`, `merek`, `sto
 
 CREATE TABLE `transaksi` (
   `id_transaksi` int(11) NOT NULL,
-  `no_transaksi` varchar(30) NOT NULL,
-  `tipe` enum('Masuk','Keluar') NOT NULL,
-  `id_barang` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `keterangan` varchar(200) DEFAULT NULL,
-  `tanggal` date NOT NULL
+  `serial_number` varchar(50) NOT NULL,
+  `jumlah_keluar` int(11) NOT NULL DEFAULT 0,
+  `tanggal_keluar` date DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `serial_number`, `jumlah_keluar`, `tanggal_keluar`, `keterangan`) VALUES
+(1, 'SN-RAZR-6652D', 10, '2026-02-18', 'Dikirim ke Toko cabang 1'),
+(2, 'SN-SAND-5541U', 60, '2026-01-27', 'DIkirim ke Toko cabang 5 yang berada di daerah pedalaman Koperasi Desa');
 
 -- --------------------------------------------------------
 
@@ -106,8 +112,7 @@ ALTER TABLE `barang`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD UNIQUE KEY `no_transaksi` (`no_transaksi`),
-  ADD KEY `id_barang` (`id_barang`);
+  ADD KEY `serial_number` (`serial_number`);
 
 --
 -- Indexes for table `users`
@@ -124,13 +129,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -146,7 +151,7 @@ ALTER TABLE `users`
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`serial_number`) REFERENCES `barang` (`serial_number`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
