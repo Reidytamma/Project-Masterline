@@ -1,21 +1,19 @@
 # Project-Masterline
 <br>
+Mata Kuliah: Pemrograman Berorientasi Objek
+<br>
+Dosen Pengampu: Herika Hayurani
+<br>
 Kelompok Masterline
 <br>
 <br>
-Nama : Kevin Tean Daniswara
-<br>
-NPM : 1402025026
+Nama : Kevin Tean Daniswara,Kelas B, 1402025026
 <br>
 <br>
-Nama : Reidytamma Perwira Alam
-<br>
-NPM : 14020205011
+Nama : Reidytamma Perwira Alam,Kelas B, 1402025051
 <br>
 <br>
-Nama : Bayu Saloko
-<br>
-NPM : 1402025011
+Nama : Bayu Saloko,Kelas B, 1402025011
 <br>
 <br>
 <br>
