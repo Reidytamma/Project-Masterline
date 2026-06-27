@@ -28,4 +28,4 @@ File database sql dengan nama database: quick_inventory
 <br>
 source code project: NetBeans
 <br>
-Tautan Repository github:
+Tautan Repository github: https://github.com/Reidytamma/Project-Masterline
